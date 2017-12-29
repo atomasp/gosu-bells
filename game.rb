@@ -1,6 +1,7 @@
 require "rubygems"
 require "gosu"
 require_relative "lib/bell"
+require_relative "lib/door"
 
 BELLS = [
   "media/do.wav",
@@ -20,6 +21,7 @@ class Game < Gosu::Window
       position_x = ((self.width / BELLS.size) * index) + 30
       @bells << Bell.new(self, position_x, 465, Gosu::Sample.new(tone))
     end
+    @door = Door.new(self, 0, 0)
   end
 
   def update
@@ -30,6 +32,7 @@ class Game < Gosu::Window
     @bells.each do |bell| 
       bell.draw
     end
+    @door.draw
   end  
 end
 
