@@ -34,14 +34,14 @@ class Door
     @door = Gosu::Image.new("media/door_0.png")
   end
 
-  def check_pattern(pattern)
-    if pattern.include? ' '
-      space_count = pattern.count(' ')
-      door_5_6 if space_count == 1
-      door_4_6 if space_count == 2
-      door_3_6 if space_count == 3
-      door_2_6 if space_count == 4
-      door_1_6 if space_count == 5
+  def check_pattern(master_pattern, pattern)
+    if pattern.size > 0
+      count = master_pattern.size / 6
+      door_5_6 if pattern.size == count
+      door_4_6 if pattern.size == count * 2
+      door_3_6 if pattern.size == count * 3
+      door_2_6 if pattern.size == count * 4
+      door_1_6 if pattern.size == count * 5
     else
       door_6_6
     end
